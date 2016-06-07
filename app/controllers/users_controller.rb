@@ -2,22 +2,14 @@ class UsersController < ApplicationController
 
   def index
     #Find Artist from Spotify
-    @artist = RSpotify::Artist.search('Beyoncé').first.name
+    @artist = RSpotify::Artist.search('Rihanna').first.name
 
     #Find Upcoming Concerts from Bands in Town
-
-    # Bandsintown.app_id = ENV['BIT_ID']
-    # artist = Bandsintown::Artist.new({
-    #     :name => "Beyoncé"
-    #     })
-    # @events = artist.events
-
-    #Find Upcoming Concerts from SongKick
-    # remote = Songkickr::Remote.new ENV['SK_API']
-    # @concerts = remote.
+    bit_api = ENV['BIT_ID']
+    @concerts = HTTParty.get('http://api.bandsintown.com/artists/Rihanna/events.json?api_version=2.0&app_id='+bit_api)
 
     #Find Top Tracks from Spotify for Concert Votes
-    @song_results = RSpotify::Artist.search('Beyoncé').first.top_tracks(:US)
+    @song_results = RSpotify::Artist.search('Rihanna').first.top_tracks(:US)
     #Save Top Tracks Search results into an array
     songs = []
     results_list = @song_results.each do |track|
