@@ -5,7 +5,15 @@
 </div>
 <div class="concert-search">
 <h3> View Upcoming Shows </h3>
-<%=@concerts%>
+<%@concerts.each do |thing| %>
+<div>
+<p>
+<%= thing['title']%>
+</p>
+<p><%= thing['formatted_datetime']%></p>
+</div>
+<%end%>
+
 </div>
 <div class="top-tracks">
 <h3>Top Tracks</h3>
