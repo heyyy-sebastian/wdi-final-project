@@ -1,1 +1,21 @@
-you logged in!
+<p>you logged in!</p>
+<%#= @results %>
+<div class="artist-search">
+<h1><%=@artist%></h1>
+</div>
+<div class="concert-search">
+<h3> View Upcoming Shows </h3>
+<%=@events%>
+</div>
+<div class="top-tracks">
+<h3>Top Tracks</h3>
+<p> Select up to 5 songs for your upcoming concert </p>
+<% @song_results.each do |track| %>
+<p><%= track.name %></p>
+<p> Listen </p>
+<p> Vote </p>
+<%end%>
+<p>Don't see the song you're looking for? Search here:</p>
+<!--Search field for specific song goes here-->
+<p>Submit Songs</p>
+</div>
