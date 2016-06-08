@@ -1,21 +1,30 @@
 class UsersController < ApplicationController
 
   def index
+  end
+
+  def find_artist
     #Find Artist from Spotify
-    @artist = RSpotify::Artist.search('Rihanna').first.name
+    artistname = params[:q]
+    spoitfy_url = RSpotify::Artist.search(artistname).first
+    artist = spoitfy_url.name
 
     #Find Upcoming Concerts from Bands in Town
     bit_api = ENV['BIT_ID']
-    @concerts = HTTParty.get('http://api.bandsintown.com/artists/Rihanna/events.json?api_version=2.0&app_id='+bit_api)
+    concerts = HTTParty.get('http://api.bandsintown.com/artists/'+artistname+'/events.json?api_version=2.0&app_id='+bit_api)
+    results = [artist, concerts]
+    @artist = results[0]
+    @concerts = results[1]
+    #binding.pry
+    render "users/index"
+  end
 
+  def find_songs
     #Find Top Tracks from Spotify for Concert Votes
-    @song_results = RSpotify::Artist.search('Rihanna').first.top_tracks(:US)
-    #Save Top Tracks Search results into an array
-    songs = []
-    results_list = @song_results.each do |track|
-      songs.push(track.name)
-    end
-
+    @artist = params['user']
+    spoitfy_url = RSpotify::Artist.search(@artist).first
+    @song_results = spoitfy_url.top_tracks(:US)
+    render "users/index"
   end
 
   def new
