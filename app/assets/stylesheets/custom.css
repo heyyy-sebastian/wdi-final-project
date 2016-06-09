@@ -1,0 +1,60 @@
+/* Table of Contents */
+
+/* Global Styling */
+p{
+  font-size: 1.5em;
+}
+
+a{
+  color: #283593;
+}
+
+/* Hidden Div: Top Tracks Styling */
+.single-concert-details{
+  padding: 1em;
+}
+
+.concert-search .single-concert-details:nth-of-type(2n){
+  background-color: #e8eaf6;
+}
+
+.top-tracks-search{
+  display: none;
+}
+
+.top-tracks{
+  padding: .3em;
+}
+
+.single-track{
+  width: 28%;
+  display: inline-block;
+  border: .2em solid #283593;
+  padding: .5em;
+  margin: .3em;
+}
+
+.track-name{
+  font-weight: bold;
+}
+
+/* Arist Heading Styling */
+.artist-search-results h1{
+  text-transform: uppercase;
+}
+
+#artist-img{
+  border: .2em solid #283593;
+}
+
+/* Button Styling */
+button, .search-form input[type="submit"]{
+  background-color: #283593;
+  color: #e8eaf6;
+  font-weight: normal;
+}
+
+button:hover, button:focus, .search-form input[type="submit"]:hover {
+  opacity: .85;
+  color: #fff;
+}

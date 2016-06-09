@@ -11,19 +11,15 @@ class UsersController < ApplicationController
 
     #Find Upcoming Concerts from Bands in Town
     bit_api = ENV['BIT_ID']
-    concerts = HTTParty.get('http://api.bandsintown.com/artists/'+artistname+'/events.json?api_version=2.0&app_id='+bit_api)
+    artistname_bit = params[:q].gsub(' ', '%20')
+    concerts = HTTParty.get('http://api.bandsintown.com/artists/'+artistname_bit+'/events.json?api_version=2.0&app_id='+bit_api)
     results = [artist, concerts]
     @artist = results[0]
+    @artist_img = spoitfy_url.images[2]['url']
     @concerts = results[1]
-    #binding.pry
-    render "users/index"
-  end
 
-  def find_songs
-    #Find Top Tracks from Spotify for Concert Votes
-    @artist = params['user']
-    spoitfy_url = RSpotify::Artist.search(@artist).first
-    @song_results = spoitfy_url.top_tracks(:US)
+    #Find Top 6 Tracks from Spotify for Concert Votes
+    @song_results = spoitfy_url.top_tracks(:US)[0..5]
     render "users/index"
   end
 
