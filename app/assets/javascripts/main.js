@@ -10,9 +10,18 @@ $(document).ready(function(){
 })//end concert details expansion
 
 $('.listen').click(function(){
-link = $('.listen').val();
-var audio = new Audio(link);
-audio.play();
+
+var ugh = $('.listen').attr('id')
+//link_id = $('.listen').attr('id')
+if(ugh == 'track-4'){
+  link_test = ugh.attr('value')
+  var audio = new Audio(link_test);
+  audio.play();
+}
+//link = $('#track-'+'5'||'4'||'3'||'2'||'1'||'0').attr('value')
+// var audio = new Audio(link);
+
+// audio.play();
 })//ugh
 
 // $('.listen').click(function(e) {

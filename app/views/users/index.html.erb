@@ -42,7 +42,7 @@
   <div class="single-track">
   <img src='<%=track.album.images[2]['url']%>'/>
   <p class="track-name" id="<%=@song_results.index(track)%>"><%= track.name %></p>
-  <button class="listen" value="<%=track.preview_url%>">Listen</button>
+  <button class="listen" id="track-<%=@song_results.index(track)%>" value="<%=track.preview_url%>">Listen</button>
   <p> Vote </p>
   </div>
   <%end%>
