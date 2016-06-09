@@ -33,16 +33,17 @@ $('.listen').click(function(){
 //hide if more than three are selected
 
 var submit = $("#votes-submission").hide();
-var checkedBoxes = $('input[name="song_vote"]').click(function() {
+var checkedBoxes = $('input[type="checkbox"]').click(function(){
   var voteCount = $( "input:checked" ).length
 
   if(checkedBoxes.is(":checked")){
     submit.slideDown('slow');
-    }
+  };
 
   if(voteCount > 3){
-    submit.slideUp('slow');
+    submit.stop().slideUp('slow');
   };
+
 })//end votes show/hide functionality
 
 //Add Row 1 & 2 classes to tracks

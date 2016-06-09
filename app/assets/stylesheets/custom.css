@@ -32,9 +32,9 @@ a{
   background-color: #e8eaf6;
 }
 
-/*.top-tracks-search{
+.top-tracks-search{
   display: none;
-}*/
+}
 
 .top-tracks{
   padding: .3em;
@@ -66,17 +66,17 @@ a{
 }
 
 .submit-votes{
-  margin: 2.5em 0 0 .2em;
+  margin: 2.5em 0 0 1.2em;
 }
 
 /* Button Styling */
-button, .search-form input[type="submit"]{
+button, input[type="submit"]{
   background-color: #283593;
   color: #e8eaf6;
   font-weight: normal;
 }
 
-button:hover, button:focus, .search-form input[type="submit"]:hover {
+button:hover, button:focus, input[type="submit"]:hover {
   opacity: .85;
   color: #fff;
 }
