@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+//expand concert/top tracks details when
+//'I'm Going' is clicked
   $('.going').click(function(){
     var $active = $('.going').find('.active');
 
@@ -9,49 +11,24 @@ $(document).ready(function(){
 
 })//end concert details expansion
 
+//click to play audio samples from Spotify
 $('.listen').click(function(){
+  //find the html id of each track
+  var trackId = $(this).attr('id')
+  //find the link from the 'value' attribute
+  link = $(this).attr('value');
+  //build new audio object with link
+  var audio = new Audio(link);
 
-var ugh = $('.listen').attr('id')
-//link_id = $('.listen').attr('id')
-if(ugh == 'track-4'){
-  link_test = ugh.attr('value')
-  var audio = new Audio(link_test);
-  audio.play();
-}
-//link = $('#track-'+'5'||'4'||'3'||'2'||'1'||'0').attr('value')
-// var audio = new Audio(link);
+  //this will always play the specific link
+  //because the trackId will always be set
+  //as the html id
+  if(trackId === $(this).attr('id')){
+    audio.play();
+  }
 
-// audio.play();
-})//ugh
+})//end audio player function
 
-// $('.listen').click(function(e) {
-//     var target = e.target;
-//     if (target !== null) {
-//         if (target.classList.contains(playingCssClass)) {
-//             audioObject.pause();
-//         } else {
-//             if (audioObject) {
-//                 audioObject.pause();
-//             }
-
-//             fetchTracks(target, function (data) {
-//                 link = $('.listen').val();
-//                 audioObject = new Audio(link);
-
-//                 audioObject.play();
-//                 target.classList.add(playingCssClass);
-
-//                 audioObject.addEventListener('ended', function() {
-//                     target.classList.remove(playingCssClass);
-//                 });
-
-//                 audioObject.addEventListener('pause', function() {
-//                     target.classList.remove(playingCssClass);
-//                 });
-//             });
-//         }
-//     }
-// });//end audioplayer attempt
 
 
 
