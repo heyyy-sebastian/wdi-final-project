@@ -2,8 +2,10 @@
 
 <div>
 <h2>Welcome to What Song</h2>
-<p>Search for an artist below, then vote on the songs you'd like to hear them play at an upcoming show.</p>
+<p id="directions">Search for an artist below, then vote on the songs you'd like to hear them play at an upcoming show.</p>
 </div>
+
+<%#=@test%>
 
 <div class="search-form">
 <%= form_tag('/search', method: 'get') do %>
@@ -15,7 +17,7 @@
 
 <% if @artist %>
 <div class="artist-search-results">
-<img src='<%=@artist_img%>'alt='artist-img' id='artist-img'/>
+<img src='<%=@artist_img%>' alt='artist-img' id='artist-img'/>
 <h1><%=@artist%></h1>
 </div>
 <div class="concert-search">
@@ -28,18 +30,19 @@
 <%= show['title']%>
 </h4>
 <p><%= show['formatted_datetime']%></p>
-<button class="going" id="show-<%= @concerts.index%>">I'm Going</button>
+<button class="going" id="show-<%= @concerts.index(show)%>">I'm Going</button>
 <br>
 <div class="top-tracks-search">
 <% if @song_results %>
-<div class="top-tracks">
+<div class="top-tracks" id="tracks">
 <h3>Top Tracks</h3>
 <p> Select up to 3 songs for your upcoming concert </p>
 
   <% @song_results.each do |track| %>
   <div class="single-track">
-  <p class="track-name"><%= track.name %></p>
-  <p> Listen </p>
+  <img src='<%=track.album.images[2]['url']%>'/>
+  <p class="track-name" id="<%=@song_results.index(track)%>"><%= track.name %></p>
+  <button class="listen" value="<%=track.preview_url%>">Listen</button>
   <p> Vote </p>
   </div>
   <%end%>
