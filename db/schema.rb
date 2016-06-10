@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607174528) do
+ActiveRecord::Schema.define(version: 20160610014318) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,20 +23,17 @@ ActiveRecord::Schema.define(version: 20160607174528) do
   end
 
   create_table "concerts", force: :cascade do |t|
-    t.integer  "artist_id"
-    t.string   "location"
-    t.string   "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "concert_identifier"
   end
-
-  add_index "concerts", ["artist_id"], name: "index_concerts_on_artist_id", using: :btree
 
   create_table "songs", force: :cascade do |t|
     t.string   "title"
     t.integer  "artist_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "track_identifier"
   end
 
   add_index "songs", ["artist_id"], name: "index_songs_on_artist_id", using: :btree
@@ -55,12 +52,12 @@ ActiveRecord::Schema.define(version: 20160607174528) do
     t.integer  "song_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "num_votes"
   end
 
   add_index "votes", ["concert_id"], name: "index_votes_on_concert_id", using: :btree
   add_index "votes", ["song_id"], name: "index_votes_on_song_id", using: :btree
 
-  add_foreign_key "concerts", "artists"
   add_foreign_key "songs", "artists"
   add_foreign_key "votes", "concerts"
   add_foreign_key "votes", "songs"

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post '/users', to: 'users#create'
 
   get '/search', to: 'users#find_artist'
+  get '/vote', to: 'users#save_song_votes'
 
   resources :users, only: [:index, :create, :new]
 end

@@ -34,14 +34,14 @@
       <button class="going" id="show-<%= @concerts.index(show)%>">I'm Going</button>
     <div class="top-tracks-search">
 
-<%= form_tag('save_song_votes', method: 'get') do %>
+<%= form_tag('/vote', method: 'get') do %>
   <% if @song_results %>
     <div class="top-tracks" id="tracks">
       <h3>Top Tracks</h3>
       <p> Select up to 3 songs for your upcoming concert </p>
       <% @song_results.each do |track| %>
         <div class="single-track">
-          <img src='<%=track.album.images[2]['url']%>'/>
+          <img class="album-cover-img" src='<%=track.album.images[2]['url']%>'/>
           <p class="track-name"><%= track.name %></p>
           <button class="listen" id="track-<%=@song_results.index(track)%>" value="<%=track.preview_url%>">Listen</button>
           <p class="votes-checkbox-wrapper">
@@ -55,25 +55,25 @@
   <!-- Search field for specific song will go here
 <p>Don't see the song you're looking for? Search here:</p>
 -->
+  <%= hidden_field_tag 'concert-name', "#{show['artists'][0]['name']}-#{show['id']}" %>
+  <%= hidden_field_tag 'current-user', "#{@user}" %>
 
- <%=  submit_tag 'Submit Songs', class: "submit-votes", id: "votes-submission" %>
+  <%=  submit_tag 'Submit Songs', class: "submit-votes", id: "votes-submission" %>
 
-<%end%>
+<%end%> <!--End form-->
 
 
-</div><!--End Concert top-tracks-search div-->
+</div><!--End Concert search div-->
 </div><!--End single-Concert-Details div-->
 
 <% end %> <!--End Concerts.each-->
 <% end %> <!--End if/else Concerts-->
 
 <% else %>
-<h3>No Results Found for "<%= @artistname %>"</h3>
-<p>Sorry, we couldn't find that artist. Please check your spelling or search
-for another artist.</p>
-
-
-<% end %><!--End if artist-->
+  <h3>No Results Found for "<%= @artistname %>"</h3>
+  <p>Sorry, we couldn't find that artist. Please check your spelling or search
+  for another artist.</p>
+<% end %><!--End if artist exists-->
 </div>
 
 </div> <!--End container class-->

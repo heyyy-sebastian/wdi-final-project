@@ -1,6 +1,10 @@
 /* Table of Contents */
 
 /* Global Styling */
+body{
+  background-color: #fff;
+}
+
 p{
   font-size: 1.5em;
 }
@@ -19,7 +23,7 @@ a{
   text-transform: uppercase;
 }
 
-#artist-img{
+#artist-img {
   border: .2em solid #283593;
 }
 
