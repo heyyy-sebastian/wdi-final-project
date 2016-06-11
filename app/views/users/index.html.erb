@@ -32,11 +32,12 @@
       <h4><%= show['title']%></h4>
       <p><%= show['formatted_datetime']%></p>
       <button class="going" id="show-<%= @concerts.index(show)%>">I'm Going</button>
-    <div class="top-tracks-search">
+    <div class="collapse-wrapper">
+    <div class="top-tracks-search" id="tracks-for-show-<%= @concerts.index(show)%>">
 
 <%= form_tag('/vote', method: 'get') do %>
   <% if @song_results %>
-    <div class="top-tracks" id="tracks">
+    <div class="top-tracks">
       <h3>Top Tracks</h3>
       <p> Select up to 3 songs for your upcoming concert </p>
       <% @song_results.each do |track| %>
@@ -62,7 +63,7 @@
 
 <%end%> <!--End form-->
 
-
+</div>
 </div><!--End Concert search div-->
 </div><!--End single-Concert-Details div-->
 

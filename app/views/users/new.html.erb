@@ -1,27 +1,32 @@
 <div class="container">
-<h4>Sign Up</h4>
-
-<%= form_for @user, url: '/users' do |f| %>
-  <% if @user.errors.any? %>
-  <div class="error_messages">
-    <h2>Form is invalid</h2>
-    <ul>
-      <% for message in @user.errors.full_messages %>
-      <li><%= message %></li>
-      <% end %>
-    </ul>
+  <div class="about-content">
+    <p>Here's some info about how this works</p>
   </div>
-  <% end %>
-​
-<%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
-    <h5> First Name </h5> <%= f.text_field :first_name%>
-    <h5> Last Name </h5> <%= f.text_field :last_name%>
-    <h5> Email </h5> <%= f.text_field :email%> </p>
-    <h5> Password </h5> <%= f.password_field :password%>
 
-    <div class="login-btn">
-      <%= f.submit :Signup %>
-    </div>
-  <% end %>
-  <%end%>
+  <div class="sign-up-div">
+    <%= form_for @user, url: '/users' do |f| %>
+      <% if @user.errors.any? %>
+        <div class="error_messages">
+          <h2>Form is invalid</h2>
+          <ul>
+          <% for message in @user.errors.full_messages %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+​
+    <%= form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f| %>
+      <h4>Sign Up</h4>
+      <h5> First Name </h5> <%= f.text_field :first_name%>
+      <h5> Last Name </h5> <%= f.text_field :last_name%>
+      <h5> Email </h5> <%= f.text_field :email%> </p>
+      <h5> Password </h5> <%= f.password_field :password%>
+
+      <div class="login-btn">
+        <%= f.submit :Signup %>
+      </div>
+    <% end %>
+    <%end%>
+  </div>
 </div>

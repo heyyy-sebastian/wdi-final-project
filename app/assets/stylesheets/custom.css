@@ -80,12 +80,17 @@ nav p{
 }
 
 .single-track{
+  vertical-align: top;
   width: 28%;
-  height: 28%;
+  height: 18em;
   display: inline-block;
   border: .2em solid #283593;
   padding: 1em;
   margin: .3em;
+}
+
+.single-track p{
+  height: 3em;
 }
 
 .single-track form, p.votes-checkbox-wrapper{
@@ -122,13 +127,36 @@ h5{
   margin-bottom: .15em;
 }
 
+/* SignUp/About Styling */
+.about-content{
+  width:60%;
+  display: inline-block;
+}
+
+.sign-up-div{
+  width: 30%;
+  display: inline-block;
+  background-color: #e8eaf6;
+  border-radius: 5%;
+  padding: .5em 2em;
+  border: .2em solid #283593;
+}
+
+.sign-up-div input[type="text"]{
+  margin: .5em 0;
+}
+
+.sign-up-div form{
+  margin-bottom: .7em;
+}
+
 /* Footer Styling */
 footer{
   background-color: #1a237e;
   color: #8c9eff;
   padding: 2em 4em;
   padding-left: 10%;
-  margin-top: 1em;
+  margin-top: 1.5em;
   height: 8em;
   position: absolute;
   bottom: -1;
