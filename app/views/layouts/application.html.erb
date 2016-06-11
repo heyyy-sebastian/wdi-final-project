@@ -7,15 +7,29 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div>
-<% if current_user %>
-  Welcome <%= current_user.first_name %>! | <%= link_to "Logout", '/logout' %>
-<% else %>
-  <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
-<% end %>
-</div>
+  <div id="wrapper">
+    <nav>
+      <h1>WhatSong</h1>
+      <p>Connecting artists to their audiences</p>
+      <div class="login-btns">
+        <% if current_user %>
+          Welcome <%= current_user.first_name %>! | <%= link_to "Logout", '/logout' %>
+        <% else %>
+          <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
+        <% end %>
+      </div>
+    </nav>
 
-<%= yield %>
-
+  <div id="main-content">
+    <%= yield %>
+  </div>
+    <footer>
+      <h5>WhatSong</h5>
+      <p>Created by <a href="www.haileycodes.com">Hailey Miller</a></p>
+      <p>June 2016</p>
+      <p>Powered by <a href="https://developer.spotify.com/web-api/">Spotify</a>
+      and <a href="https://www.bandsintown.com/api/overview">Bands in Town</a></p>
+    </footer>
+  </div>
 </body>
 </html>

@@ -1,6 +1,11 @@
 /* Table of Contents */
 
 /* Global Styling */
+#wrapper{
+  min-height: 100%;
+  position: relative;
+}
+
 body{
   background-color: #fff;
 }
@@ -11,6 +16,29 @@ p{
 
 a{
   color: #283593;
+}
+
+/* Nav Header */
+nav{
+  background-color: #303f9f;
+  padding: 1em 8em;
+  padding-left: 10%;
+  margin-bottom: 2em;
+}
+
+nav h1, nav div, nav div a{
+  color: #fff;
+}
+
+nav p{
+  color: #8c9eff;
+  display: inline-block;
+  font-style: italic;
+}
+
+.login-btns{
+  float: right;
+  display: inline-block;
 }
 
 /* Search-Directions Styling */
@@ -42,7 +70,6 @@ a{
 
 .top-tracks{
   padding: .3em;
-
 }
 
 .votes-padding{
@@ -85,12 +112,27 @@ button:hover, button:focus, input[type="submit"]:hover {
   color: #fff;
 }
 
+/* Login Page Styling */
+
+#login-btn{
+  padding-top: 1em;
+}
+
+h5{
+  margin-bottom: .15em;
+}
+
 /* Footer Styling */
 footer{
   background-color: #1a237e;
   color: #8c9eff;
   padding: 2em 4em;
-
+  padding-left: 10%;
+  margin-top: 1em;
+  height: 8em;
+  position: absolute;
+  bottom: -1;
+  width: 100%;
 }
 
 footer p{
@@ -104,6 +146,6 @@ footer a{
   text-decoration: none;
 }
 
-footer a:hover{
+footer a:hover, nav div a:hover{
   color: #304ffe;
 }

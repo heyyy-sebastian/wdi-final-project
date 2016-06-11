@@ -1,7 +1,7 @@
 <div class="container">
 
 <div>
-  <h2>Welcome to What Song</h2>
+  <h2>Welcome to WhatSong</h2>
   <p id="directions">Search for an artist below, then vote on the songs you'd like
   to hear them play at an upcoming show.</p>
 </div>
@@ -43,7 +43,7 @@
         <div class="single-track">
           <img class="album-cover-img" src='<%=track.album.images[2]['url']%>'/>
           <p class="track-name"><%= track.name %></p>
-          <button class="listen" id="track-<%=@song_results.index(track)%>" value="<%=track.preview_url%>">Listen</button>
+          <button type="button" class="listen" id="track-<%=@song_results.index(track)%>" value="<%=track.preview_url%>">Listen</button>
           <p class="votes-checkbox-wrapper">
             <%= check_box_tag "song_vote_#{track.id}" %>
             <span class="votes-padding">vote</span>
@@ -76,13 +76,4 @@
 <% end %><!--End if artist exists-->
 </div>
 
-<footer>
-  <h5>What Song</h5>
-  <p>Created by <a href="www.haileycodes.com">Hailey Miller</a></p>
-  <p>June 2016</p>
-  <p>Powered by <a href="https://developer.spotify.com/web-api/">Spotify</a>
-  and <a href="https://www.bandsintown.com/api/overview">Bands in Town</a></p>
-</footer>
-
 </div> <!--End container class-->
-

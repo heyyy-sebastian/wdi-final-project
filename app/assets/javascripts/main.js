@@ -12,7 +12,7 @@ $(document).ready(function(){
 })//end concert details expansion
 
 //click to play audio samples from Spotify
-$('.listen').click(function(){
+$('.listen').click(function(e){
   //find the html id of each track
   var trackId = $(this).attr('id');
   //find the link from the 'value' attribute
