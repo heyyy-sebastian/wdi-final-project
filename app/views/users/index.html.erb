@@ -10,7 +10,7 @@
   <%= form_tag('/search', method: 'get') do %>
     <%= label_tag(:q, 'Search by Artist:') %>
     <%= text_field_tag(:q) %>
-    <%= submit_tag('Go') %>
+    <%= submit_tag('Go', id: 'find-concerts') %>
   <% end %>
 </div>
 

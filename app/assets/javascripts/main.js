@@ -50,4 +50,23 @@ var checkedBoxes = $('input[type="checkbox"]').click(function(){
 
 })//end votes show/hide functionality
 
+//hide addtional concerts if there are more than 5
+
+$('#find-concerts').click(function(){
+
+  $('.concert-search').each(function(){
+    debugger
+        var $this = $(this);
+        console.log(this)
+        if ($this.find('.single-concert-details').length > 5) {
+            $this.find('.more-shows').show();
+        } else {
+            $this.find('.more-shows').hide();
+        }
+      }()
+    )
+
+})//end hide extra concerts
+
+
 })//end wrapper function

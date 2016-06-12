@@ -119,10 +119,6 @@ button:hover, button:focus, input[type="submit"]:hover {
 
 /* Login Page Styling */
 
-#login-btn{
-  padding-top: 1em;
-}
-
 h5{
   margin-bottom: .15em;
 }
@@ -131,6 +127,17 @@ h5{
 .about-content{
   width:60%;
   display: inline-block;
+  vertical-align: top;
+}
+
+.about-content p{
+  padding-right: 1.5em;
+}
+
+.about-content h5{
+  font-weight: bold;
+  font-style: italic;
+  margin-bottom: .5em;
 }
 
 .sign-up-div{
@@ -148,6 +155,12 @@ h5{
 
 .sign-up-div form{
   margin-bottom: .7em;
+}
+
+.login-btn a{
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #e8eaf6;
 }
 
 /* Footer Styling */
