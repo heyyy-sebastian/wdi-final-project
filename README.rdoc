@@ -1,28 +1,29 @@
-== README
+= WhatSong
+WhatSong is a web application that allows users to vote on the songs they would like an artist to play at an upcoming concert.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+==Capabilities
+A user can register and login to search for an artist; if the artist has any upcoming concerts, the user can view their most popular tracks and vote for up to 3 songs they would like the artist to play. Eventually, users will be able to view trending votes and retrieve their own personal votes for past/upcoming shows.
 
-Things you may want to cover:
+==How It's Built
+===Data
+The data is pulled from the [Spotify API](https://developer.spotify.com/web-api/) and the [Bands in Town API](https://www.bandsintown.com/api/overview). An artist's name and top tracks come from Spotify, and the concert information is pulled from the Bands in Town API. A Ruby wrapper was used to pull data from Spotify and HTTParty was used for the API calls to Bands in Town.
 
-* Ruby version
+===Parsing
+Currently the data loaded from Spotify and Bands in Town is parsed and stored in the PostgreSQL database only after votes for song choices have been submitted. The Songs and Concert table are joined in a Votes table to maintain specificity.
 
-* System dependencies
+===Site/Deployment
+The site is made from a basic Rails framework with a PostgreSQL database. It currently has three pages: one for signup, one for login, and on for search. Eventually, a page to view trending votes and another page to review a user's personal voting history will be added.
 
-* Configuration
+It's hosted on Heroku [here](http://what-song.herokuapp.com/).
 
-* Database creation
+===Limitations
+The search functionality for Bands in Town doesn't recognize alternative spellings for artists, whereas Spotify does (i.e. searching "JLo" returns results from the Spotify API, but no results are found from the Bands in Town API). SongKick might offer better search functionality, though API key approval is pending.
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+==To-Do
+- [ ] Additional testing for votes submission
+- [ ] View trending votes
+- [ ] View user votes
+- [ ] Implement ActionMailer for Welcome email; upcoming show reminders
+- [ ] Pause functionality on audio samples
+- [ ] Search for a specific song
+- [ ] Table of Contents for code files
