@@ -26,4 +26,4 @@ The search functionality for Bands in Town doesn't recognize alternative spellin
 - [ ] Implement ActionMailer for Welcome email; upcoming show reminders
 - [ ] Pause functionality on audio samples
 - [ ] Search for a specific song
-
+- [ ] Table of Contents for code files
