@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 //expand/collapse concert/top tracks details when
 //'I'm Going' is clicked
-  $('.going').click(function(){
+ goingClickEvent = function(){ $('.going').click(function(){
     var specificShow = $(this).attr('id');
     var topTracks = "#tracks-for-"+$(this).attr('id');
     var active = $('.collapse-wrapper').find('.active');
@@ -11,10 +11,10 @@ $(document).ready(function(){
       $(''+topTracks+'').stop().slideDown('slow').addClass('active');
       active.stop().slideUp().removeClass('active');
     };
+  })
+}//end concert details expansion
 
-
-})//end concert details expansion
-
+goingClickEvent();
 //click to play audio samples from Spotify
 $('.listen').click(function(){
   //find the html id of each track
@@ -58,6 +58,7 @@ var checkedBoxes = $('input[type="checkbox"]').click(function(){
 //Expand more concerts on click
 $('.more-shows').click(function(){
      $(".concert-search div:nth-child(n+4)").slideToggle('slow');
+    goingClickEvent();
   }
 );//end show/hide concerts function
 

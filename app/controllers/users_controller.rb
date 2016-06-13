@@ -46,37 +46,35 @@ class UsersController < ApplicationController
       song_collection.push(song)
     end
 
-    #assign params to variables
-    concert_identifier = params['concert-name']
-
     #loop through the collection of songs and save each one
     song_collection.each do |song|
 
       #look for song in db
-      check_for_song(song)
+      song_check = check_for_song(song)
 
-      #if it exists, do stuff; if it doesn't, save it
-      if check_for_song
+      #if it exists, do stuff; if it doesn't, save it after the "else"
+      if song_check
         #the song exists, assign it to a variable
-        voted_song = Song.find(track_identifier: song)
+        v_song = voted_song(song)
+
         #find song id to pass in later
-        voted_song_id = voted_song.id
+        v_song_id = voted_song_id(song)
 
         #check for concert
-        check_for_concert(concert_identifier)
+        concert_check = check_for_concert(concert_params)
 
         #if concert exists, check to see if it exists in vote table
-        check_concert_to_upvote
+        check_concert_to_upvote(concert_check, v_song)
 
       #if the song does not exist in Song table, create the song and
       #check to see if the concert exists before Upvoting
       else
         #save song to db
-        new_song = Song.create(track_identifier: song)
+        v_song = Song.create(track_identifier: song)
 
         #check for concert
-        check_for_concert(concert_identifier)
-        check_concert_to_upvote
+        concert_check = check_for_concert(concert_params)
+        check_concert_to_upvote(concert_check, v_song)
         #save concert if it doesn't exit
         #increase the votes on the song
       end
@@ -112,11 +110,20 @@ class UsersController < ApplicationController
       .permit(:email, :password, :first_name, :last_name)
     end
 
-    # def song_votes_params
-    #   params
-    #   .require(:song)
+  #define concert params
+  def concert_params
+    params['concert-name']
+  end
 
-    # end
+  #assign the song to a variable
+  def voted_song(track)
+    Song.find_by(track_identifier: track)
+  end
+
+  def voted_song_id(track)
+      voted_track = voted_song(track)
+      voted_track.id
+  end
 
   #check if song exists in songs table
   def check_for_song(song_finder)
@@ -129,48 +136,52 @@ class UsersController < ApplicationController
   end
 
   #check if the concert exists in the votes table
-  def check_for_song_vote_concert(concert_finder)
-    concert = Concert.find_by(concert_identifier: concert_finder)
+  def check_for_song_vote_concert(concert)
     Vote.exists?(concert_id: concert.id)
   end
 
   #check if the song exists in the votes table
-  def check_for_song_vote_track(song_finder)
-    song_vote_id = Song.find_by(song_finder)
-    Song.exists?(track_identifier: song_vote_id.id)
+  def check_for_song_vote_track(song)
+    Song.exists?(track_identifier: song.id)
   end
 
   #increase the number of votes on the song in the Vote table
-  def upvote(new_vote)
-    new_vote.increment_counter(:num_votes, new_vote.id)
+  def upvote(song)
+    # this doesn't work
+    song.num_votes +=1
   end
 
-  def check_concert_to_upvote
-        if check_for_concert
+  def check_concert_to_upvote(concert_checker, v_song)
+        if concert_checker
           #the concert exists, so find its id for upvoting
-          existing_concert = Concert.find_by(concert_identifier)
+          existing_concert = Concert.find_by(concert_identifier: concert_params)
           existing_concert_id = existing_concert.id
 
-          check_for_song_vote_concert(existing_concert)
-          check_for_song_vote_track(voted_song)
+          concert_voting = check_for_song_vote_concert(existing_concert)
+          song_voting = check_for_song_vote_track(v_song)
           #if the song exists in the vote table, upvote it
-          if check_for_song_vote_concert && check_for_song_vote_track
+          if song_voting && concert_voting
             upvote(voted_song)
-            redirect_to "/users"
+
           else
-            Vote.create(song_id: voted_song_id, concert_id: existing_concert_id)
-            upvote(voted_song)
+            new_song = Vote.create(song_id: v_song.id, concert_id: existing_concert_id)
+            upvote(new_song)
             #add track to db to upvote it
-            redirect_to "/users"
+
           end
         #if the song exists, but the concert doesn't, create a new one with the song in the
         #Vote table to go with it (song already exists in songs table)
         else
         #create the concert
-          new_concert = Concert.create(concert_identifier: concert_identifier)
+
+          new_concert = Concert.create(concert_identifier: concert_params)
           new_concert_id = new_concert.id
-        #create song to upvote it
-          Vote.create(song_id: voted_song_id, concert_id: new_concert_id)
+
+          #create song to upvote it
+          v_song_id = voted_song_id(v_song)
+          new_song = Vote.create(song_id: v_song_id, concert_id: new_concert_id)
+          upvote(new_song)
+
         end
   end
 
