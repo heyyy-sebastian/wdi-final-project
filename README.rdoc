@@ -1,5 +1,5 @@
-= What Song
-What song is a web application that allows users to vote on the songs they would like an artist to play at an upcoming concert.
+= WhatSong
+WhatSong is a web application that allows users to vote on the songs they would like an artist to play at an upcoming concert.
 
 ==Capabilities
 A user can register and login to search for an artist; if the artist has any upcoming concerts, the user can view their most popular tracks and vote for up to 3 songs they would like the artist to play. Eventually, users will be able to view trending votes and retrieve their own personal votes for past/upcoming shows.
@@ -20,7 +20,7 @@ It's hosted on Heroku [here](http://what-song.herokuapp.com/).
 The search functionality for Bands in Town doesn't recognize alternative spellings for artists, whereas Spotify does (i.e. searching "JLo" returns results from the Spotify API, but no results are found from the Bands in Town API). SongKick might offer better search functionality, though API key approval is pending.
 
 ==To-Do
-- [ ] Complete save functionality for votes submission
+- [ ] Additional testing for votes submission
 - [ ] View trending votes
 - [ ] View user votes
 - [ ] Implement ActionMailer for Welcome email; upcoming show reminders
