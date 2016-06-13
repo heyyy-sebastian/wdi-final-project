@@ -20,7 +20,7 @@ It's hosted on Heroku [here](http://what-song.herokuapp.com/).
 The search functionality for Bands in Town doesn't recognize alternative spellings for artists, whereas Spotify does (i.e. searching "JLo" returns results from the Spotify API, but no results are found from the Bands in Town API). SongKick might offer better search functionality, though API key approval is pending.
 
 ==To-Do
-- [ ]Complete save functionality for votes submission
+- [ ] Complete save functionality for votes submission
 - [ ] View trending votes
 - [ ] View user votes
 - [ ] Implement ActionMailer for Welcome email; upcoming show reminders
