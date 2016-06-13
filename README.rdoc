@@ -6,7 +6,7 @@ A user can register and login to search for an artist; if the artist has any upc
 
 ==How It's Built
 ===Data
-The data is pulled from the [`Spotify API`](https://developer.spotify.com/web-api/) and the [`Bands in Town API`](https://www.bandsintown.com/api/overview). An artist's name and top tracks come from Spotify, and the concert information is pulled from the Bands in Town API. A Ruby wrapper was used to pull data from Spotify and HTTParty was used for the API calls to Bands in Town.
+The data is pulled from the [Spotify API](https://developer.spotify.com/web-api/) and the [Bands in Town API](https://www.bandsintown.com/api/overview). An artist's name and top tracks come from Spotify, and the concert information is pulled from the Bands in Town API. A Ruby wrapper was used to pull data from Spotify and HTTParty was used for the API calls to Bands in Town.
 
 ===Parsing
 Currently the data loaded from Spotify and Bands in Town is parsed and stored in the PostgreSQL database only after votes for song choices have been submitted. The Songs and Concert table are joined in a Votes table to maintain specificity.
@@ -14,16 +14,16 @@ Currently the data loaded from Spotify and Bands in Town is parsed and stored in
 ===Site/Deployment
 The site is made from a basic Rails framework with a PostgreSQL database. It currently has three pages: one for signup, one for login, and on for search. Eventually, a page to view trending votes and another page to review a user's personal voting history will be added.
 
-It's hosted on Heroku [`here`](http://what-song.herokuapp.com/).
+It's hosted on Heroku [here](http://what-song.herokuapp.com/).
 
 ===Limitations
 The search functionality for Bands in Town doesn't recognize alternative spellings for artists, whereas Spotify does (i.e. searching "JLo" returns results from the Spotify API, but no results are found from the Bands in Town API). SongKick might offer better search functionality, though API key approval is pending.
 
 ==To-Do
-- []Complete save functionality for votes submission
-- [] View trending votes
-- [] View user votes
-- [] Implement ActionMailer for Welcome email; upcoming show reminders
-- [] Pause functionality on audio samples
-- [] Search for a specific song
+- [ ]Complete save functionality for votes submission
+- [ ] View trending votes
+- [ ] View user votes
+- [ ] Implement ActionMailer for Welcome email; upcoming show reminders
+- [ ] Pause functionality on audio samples
+- [ ] Search for a specific song
 
