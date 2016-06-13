@@ -34,7 +34,8 @@ class UsersController < ApplicationController
   end
 
 
-#epic method to save songs, votes and concerts into the db
+#epic method to save songs, votes and concerts into the db;
+#lots of private methods are called for better legibility
   def save_song_votes
     #extract song identifiers from params and push them into an array
     songs_from_params = params.to_a[1..3]
@@ -67,17 +68,8 @@ class UsersController < ApplicationController
         #if concert exists, check to see if it exists in vote table
         check_concert_to_upvote
 
-        #if the song exists, but the concert doesn't, create a new one with the song in the
-        #Vote table to go with it (song already exists in songs table)
-        else
-        #create the concert
-          new_concert = Concert.create(concert_identifier: concert_identifier)
-          new_concert_id = new_concert.id
-        #create song to upvote it
-          Vote.create(song_id: voted_song_id, concert_id: new_concert_id)
-        end
-
-      #if the song does not exist in Song table, create everything
+      #if the song does not exist in Song table, create the song and
+      #check to see if the concert exists before Upvoting
       else
         #save song to db
         new_song = Song.create(track_identifier: song)
@@ -91,7 +83,6 @@ class UsersController < ApplicationController
 
     end #end song_collection.each
 
-    binding.pry
     puts params.inspect
     render "users/index"
   end
@@ -128,8 +119,8 @@ class UsersController < ApplicationController
     # end
 
   #check if song exists in songs table
-  def check_for_song(song)
-    Song.exists?(track_identifier: song)
+  def check_for_song(song_finder)
+    Song.exists?(track_identifier: song_finder)
   end
 
   #check if concert exists in concert table
@@ -172,6 +163,15 @@ class UsersController < ApplicationController
             #add track to db to upvote it
             redirect_to "/users"
           end
-    end
+        #if the song exists, but the concert doesn't, create a new one with the song in the
+        #Vote table to go with it (song already exists in songs table)
+        else
+        #create the concert
+          new_concert = Concert.create(concert_identifier: concert_identifier)
+          new_concert_id = new_concert.id
+        #create song to upvote it
+          Vote.create(song_id: voted_song_id, concert_id: new_concert_id)
+        end
+  end
 
-end
+end #end Users Controller class definition

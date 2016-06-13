@@ -27,9 +27,14 @@ $('.listen').click(function(){
   //this will always play the specific link
   //because the trackId will always be set
   //as the html id
-  if(trackId === $(this).attr('id')){
-    audio.play();
-  }
+  if((trackId === $(this).attr('id')) && (audio.classList.contains('playing'))){
+        console.log(this)
+        audio.pause();
+        $('.listen').removeClass('playing')
+      } else {
+        audio.play();
+        $('.listen').addClass('playing');
+     }
 
 })//end audio player function
 
@@ -50,23 +55,22 @@ var checkedBoxes = $('input[type="checkbox"]').click(function(){
 
 })//end votes show/hide functionality
 
-//hide addtional concerts if there are more than 5
+//Expand more concerts on click
+$('.more-shows').click(function(){
+     $(".concert-search div:nth-child(n+4)").slideToggle('slow');
+  }
+);//end show/hide concerts function
 
-$('#find-concerts').click(function(){
-
-  $('.concert-search').each(function(){
-    debugger
-        var $this = $(this);
-        console.log(this)
-        if ($this.find('.single-concert-details').length > 5) {
-            $this.find('.more-shows').show();
-        } else {
-            $this.find('.more-shows').hide();
-        }
-      }()
-    )
-
-})//end hide extra concerts
+//Swap out View All/View Less concerts on click
+$('.more-shows').on("click", function() {
+  var el = $(this);
+  if (el.text() == el.data("text-swap")) {
+    el.text(el.data("text-original"));
+  } else {
+    el.data("text-original", el.text());
+    el.text(el.data("text-swap"));
+  }
+});//end text swap
 
 
 })//end wrapper function

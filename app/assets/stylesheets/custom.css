@@ -60,6 +60,10 @@ nav p{
   padding: 1em;
 }
 
+.concert-search div:nth-child(n+9){
+  display:none;
+}
+
 .concert-search .single-concert-details:nth-of-type(2n){
   background-color: #e8eaf6;
 }
@@ -103,6 +107,10 @@ nav p{
 
 .submit-votes{
   margin: 2.5em 0 0 1.2em;
+}
+
+.more-shows{
+  margin: 1.5em 1.3em;
 }
 
 /* Button Styling */
