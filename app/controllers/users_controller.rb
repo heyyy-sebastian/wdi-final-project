@@ -54,7 +54,7 @@ class UsersController < ApplicationController
 
       #if it exists, do stuff; if it doesn't, save it after the "else"
       if song_check
-        #the song exists, assign it to a variable
+        #the song exists, so it's assigned to a variable
         v_song = voted_song(song)
 
         #find song id to pass in later
@@ -121,8 +121,7 @@ class UsersController < ApplicationController
   end
 
   def voted_song_id(track)
-      voted_track = voted_song(track)
-      voted_track.id
+    track.id
   end
 
   #check if song exists in songs table
