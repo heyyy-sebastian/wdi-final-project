@@ -12,6 +12,8 @@ class UsersController < ApplicationController
 
     #prevent no-method-for-nil-class-error if artist cannot be found
     if spotify_url.nil?
+      #this method needs to return *something* otherwise it will throw an
+      #error
       spotify_url
     else
       @artist = spotify_url.name
@@ -51,6 +53,7 @@ class UsersController < ApplicationController
 
       #look for song in db
       song_check = check_for_song(song)
+      #check naming conventions here, change for other uses of 'song' if needed
 
       #if it exists, do stuff; if it doesn't, save it after the "else"
       if song_check
@@ -65,18 +68,22 @@ class UsersController < ApplicationController
 
         #if concert exists, check to see if it exists in vote table
         check_concert_to_upvote(concert_check, v_song)
+        #check naming conventions here
 
       #if the song does not exist in Song table, create the song and
       #check to see if the concert exists before Upvoting
       else
         #save song to db
         v_song = Song.create(track_identifier: song)
+        #check naming conventions here
 
         #check for concert
         concert_check = check_for_concert(concert_params)
         check_concert_to_upvote(concert_check, v_song)
         #save concert if it doesn't exit
         #increase the votes on the song
+
+        #check naming conventions here ^^
       end
 
     end #end song_collection.each
