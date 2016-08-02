@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   get '/search', to: 'users#find_artist'
   get '/vote', to: 'users#save_song_votes'
 
-  root to: 'sessions#new'
+  root to: 'users#new'
   resources :users, only: [:index, :create, :new]
 end
