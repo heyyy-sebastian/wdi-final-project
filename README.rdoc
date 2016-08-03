@@ -22,6 +22,7 @@ The search functionality for Bands in Town doesn't recognize alternative spellin
 ==To-Do
 - NAMING CONVENTIONS ON VOTES SUBMISSION
 - Additional testing for votes submission
+- Find a way to remove "" from search results on landing pg once logged in: prevent default?
 - Flash Notices
   - Votes submission successful
   - Logout success

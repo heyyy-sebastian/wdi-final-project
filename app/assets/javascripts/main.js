@@ -14,7 +14,9 @@ $(document).ready(function(){
   })
 }//end concert details expansion
 
+//invoke goingClickEvent
 goingClickEvent();
+
 //click to play audio samples from Spotify
 $('.listen').click(function(){
   //find the html id of each track
