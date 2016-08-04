@@ -14,7 +14,8 @@ Currently the data loaded from Spotify and Bands in Town is parsed and stored in
 ===Site/Deployment
 The site is made from a basic Rails framework with a PostgreSQL database. It currently has three pages: one for signup, one for login, and on for search. Eventually, a page to view trending votes and another page to review a user's personal voting history will be added.
 
-It's hosted on Heroku [here](http://what-song.herokuapp.com/).
+It's hosted on Heroku [here](http://what-song.herokuapp.com/), though I've had some issues  with 500 error messages, so it may be best
+to use localhost:3000
 
 ===Limitations
 The search functionality for Bands in Town doesn't recognize alternative spellings for artists, whereas Spotify does (i.e. searching "JLo" returns results from the Spotify API, but no results are found from the Bands in Town API). SongKick might offer better search functionality, though API key approval is pending.
